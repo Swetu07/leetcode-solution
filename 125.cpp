@@ -1,0 +1,77 @@
+// 125 Solution
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPalindrome(string s)
+{
+    int left = 0;
+    int right = s.size() - 1;
+
+    while (left < right)
+    {
+        while (left < right && !isalnum(s[left]))
+        {
+            left++;
+        }
+
+        while (left < right && !isalnum(s[right]))
+        {
+            right--;
+        }
+
+        if (tolower(s[left]) != tolower(s[right]))
+        {
+            return false;
+        }
+
+        left++;
+        right--;
+    }
+
+    return true;
+}
+
+int main()
+{
+    string s;
+
+    cout << "Enter string: ";
+    getline(cin, s);
+
+    if (isPalindrome(s))
+        cout << "Palindrome";
+    else
+        cout << "Not Palindrome";
+
+    return 0;
+}
+
+
+// Leetcode Solution
+/*
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        int left = 0;
+        int right = s.size() - 1;
+
+        while (left < right)
+        {
+            while (left < right && !isalnum(s[left]))
+                left++;
+
+            while (left < right && !isalnum(s[right]))
+                right--;
+
+            if (tolower(s[left]) != tolower(s[right]))
+                return false;
+
+            left++;
+            right--;
+        }
+
+        return true;
+    }
+};
+*/
