@@ -82,30 +82,110 @@ public:
 */
 
 // 912 Solution using Bubble Sort
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// vector<int> sortArray(vector<int>& nums)
+// {
+//     int n = nums.size();
+
+//     for (int i = 0; i < n - 1; i++)
+//     {
+//         bool swapped = false;
+
+//         for (int j = 0; j < n - i - 1; j++)
+//         {
+//             if (nums[j] > nums[j + 1])
+//             {
+//                 swap(nums[j], nums[j + 1]);
+//                 swapped = true;
+//             }
+//         }
+
+//         if (swapped == false)
+//         {
+//             break;
+//         }
+//     }
+
+//     return nums;
+// }
+
+// int main()
+// {
+//     int n;
+//     cin >> n;
+
+//     vector<int> nums(n);
+
+//     for (int i = 0; i < n; i++)
+//     {
+//         cin >> nums[i];
+//     }
+
+//     nums = sortArray(nums);
+
+//     for (int x : nums)
+//     {
+//         cout << x << " ";
+//     }
+
+//     return 0;
+// }
+
+// Leetcode Solution (bubble)
+/*
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums)
+    {
+        int n = nums.size();
+
+        for (int i = 0; i < n - 1; i++)
+        {
+            bool swapped = false;
+
+            for (int j = 0; j < n - i - 1; j++)
+            {
+                if (nums[j] > nums[j + 1])
+                {
+                    swap(nums[j], nums[j + 1]);
+                    swapped = true;
+                }
+            }
+
+            if (!swapped)
+            {
+                break;
+            }
+        }
+
+        return nums;
+    }
+};
+*/
+
+// 912 Solution using Insertion Sort
+#include <iostream>
+#include <vector>
 using namespace std;
 
 vector<int> sortArray(vector<int>& nums)
 {
     int n = nums.size();
 
-    for (int i = 0; i < n - 1; i++)
+    for (int i = 1; i < n; i++)
     {
-        bool swapped = false;
+        int key = nums[i];
+        int j = i - 1;
 
-        for (int j = 0; j < n - i - 1; j++)
+        while (j >= 0 && nums[j] > key)
         {
-            if (nums[j] > nums[j + 1])
-            {
-                swap(nums[j], nums[j + 1]);
-                swapped = true;
-            }
+            nums[j + 1] = nums[j];
+            j--;
         }
 
-        if (swapped == false)
-        {
-            break;
-        }
+        nums[j + 1] = key;
     }
 
     return nums;
@@ -133,31 +213,26 @@ int main()
     return 0;
 }
 
-// Leetcode Solution (bubble)
-/*
+// leetcode (using Insertion sort)
+/* 
 class Solution {
 public:
     vector<int> sortArray(vector<int>& nums)
     {
         int n = nums.size();
 
-        for (int i = 0; i < n - 1; i++)
+        for (int i = 1; i < n; i++)
         {
-            bool swapped = false;
+            int key = nums[i];
+            int j = i - 1;
 
-            for (int j = 0; j < n - i - 1; j++)
+            while (j >= 0 && nums[j] > key)
             {
-                if (nums[j] > nums[j + 1])
-                {
-                    swap(nums[j], nums[j + 1]);
-                    swapped = true;
-                }
+                nums[j + 1] = nums[j];
+                j--;
             }
 
-            if (!swapped)
-            {
-                break;
-            }
+            nums[j + 1] = key;
         }
 
         return nums;
