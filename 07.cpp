@@ -18,7 +18,6 @@ int main()
     {
         int digit = x % 10;
 
-        // Check for overflow before updating reverse
         if (reverse > INT_MAX / 10 || reverse < INT_MIN / 10)
         {
             cout << "Overflow occurred!" << endl;
